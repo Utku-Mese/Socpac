@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sospac/constants.dart';
-import 'package:sospac/views/screens/signup_screen.dart';
+import 'package:sospac/views/screens/auth/signup_screen.dart';
 import 'package:sospac/views/widgets/text_input_field.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -10,17 +10,24 @@ class LoginScreen extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  bool webView = false;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    if (size.width > 800) {
+      webView = true;
+    } else {
+      webView = false;
+    }
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
         width: size.width,
         height: size.height,
-        decoration:  BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            stops: [0.0, 0.8],
+            stops: const [0.0, 0.8],
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
             colors: [
@@ -51,7 +58,7 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.12),
               Container(
-                width: size.width * 0.9,
+                width: webView == false ? size.width * 0.9 : size.width * 0.3,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -64,7 +71,7 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.05),
               Container(
-                width: size.width * 0.9,
+                width: webView == false ? size.width * 0.9 : size.width * 0.3,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -78,7 +85,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: size.height * 0.06),
               Container(
                 height: 50,
-                width: size.width * 0.75,
+                width: webView == false ? size.width * 0.75 : size.width * 0.20,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: secondaryColor,

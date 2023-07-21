@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sospac/controllers/auth_controller.dart';
 import 'package:sospac/firebase_options.dart';
-import 'package:sospac/views/screens/login_screen.dart';
+import 'package:sospac/views/screens/auth/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

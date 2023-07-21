@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sospac/constants.dart';
 import 'package:sospac/models/user_model.dart' as Umodel;
 import 'package:sospac/views/screens/home_screen.dart';
-import 'package:sospac/views/screens/login_screen.dart';
+import 'package:sospac/views/screens/auth/login_screen.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();

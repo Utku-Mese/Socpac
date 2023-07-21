@@ -10,9 +10,16 @@ class SignUpScreen extends StatelessWidget {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
 
+  bool webView = false;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    if (size.width > 800) {
+      webView = true;
+    } else {
+      webView = false;
+    }
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -40,7 +47,7 @@ class SignUpScreen extends StatelessWidget {
                   color: primaryColor,
                 ),
               ),
-              SizedBox(height: size.height * 0.03),
+              SizedBox(height: size.height * 0.02),
               Text(
                 "Your social space!",
                 style: GoogleFonts.poppins(
@@ -92,7 +99,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.03),
               Container(
-                width: size.width * 0.9,
+                width: webView == false ? size.width * 0.9 : size.width * 0.3,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -105,7 +112,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.02),
               Container(
-                width: size.width * 0.9,
+                width: webView == false ? size.width * 0.9 : size.width * 0.3,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -118,7 +125,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.02),
               Container(
-                width: size.width * 0.9,
+                width: webView == false ? size.width * 0.9 : size.width * 0.3,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -132,7 +139,7 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(height: size.height * 0.05),
               Container(
                 height: 50,
-                width: size.width * 0.75,
+                width: webView == false ? size.width * 0.75 : size.width * 0.20,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: secondaryColor,
