@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sospac/constants.dart';
 import 'package:sospac/controllers/video_controller.dart';
 import 'package:sospac/views/widgets/video_player_item.dart';
 
@@ -8,6 +9,8 @@ class VideoScreen extends StatelessWidget {
 
   final VideoController videoController = Get.put(
       VideoController()); //! if not working, try to this line add state class
+
+  bool isLiked = false;
 
   buildProfilePhoto(String profilePhoto) {
     return Container(
@@ -21,6 +24,13 @@ class VideoScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  int daysBetween(DateTime from) {
+    DateTime now = DateTime.now();
+    return DateTime(now.year, now.month, now.day)
+        .difference(DateTime(from.year, from.month, from.day))
+        .inDays;
   }
 
   @override
@@ -69,13 +79,33 @@ class VideoScreen extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Text(
-                                          data.username,
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              data.username,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 21,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                              daysBetween(data.createdAt) == 0
+                                                  ? "Today"
+                                                  : daysBetween(
+                                                              data.createdAt) ==
+                                                          1
+                                                      ? "Yesterday"
+                                                      : "${daysBetween(data.createdAt)} days ago",
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                         Text(
                                           data.caption,
@@ -86,16 +116,18 @@ class VideoScreen extends StatelessWidget {
                                         ),
                                         Row(
                                           children: [
-                                            const Icon(
-                                              Icons.tag,
-                                              size: 15,
-                                              color: Colors.white,
-                                            ),
+                                            data.tag != ""
+                                                ? const Icon(
+                                                    Icons.tag,
+                                                    size: 13,
+                                                    color: Colors.white,
+                                                  )
+                                                : Container(),
                                             Text(
                                               data.tag,
                                               style: const TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 15,
+                                                fontSize: 13,
                                               ),
                                             ),
                                           ],
@@ -124,11 +156,20 @@ class VideoScreen extends StatelessWidget {
                                 Column(
                                   children: [
                                     InkWell(
-                                      onTap: () {},
-                                      child: const Icon(
-                                        Icons.favorite_border_rounded,
+                                      onTap: () {
+                                        videoController.likeVideo(data.id);
+                                        isLiked = !isLiked;
+                                      },
+                                      child: Icon(
+                                        data.likes.contains(
+                                                authController.user!.uid)
+                                            ? Icons.favorite_rounded
+                                            : Icons.favorite_border_rounded,
                                         size: 40,
-                                        color: Colors.white,
+                                        color: data.likes.contains(
+                                                authController.user!.uid)
+                                            ? Colors.red
+                                            : Colors.white,
                                       ),
                                     ),
                                     Text(
