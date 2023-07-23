@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
+import 'package:sospac/constants.dart';
 import 'package:sospac/views/screens/add_video_screen.dart';
+import 'package:sospac/views/screens/profile_screen.dart';
+import 'package:sospac/views/screens/search_screen.dart';
 import 'package:sospac/views/screens/video_screen.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
@@ -23,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
     return SafeArea(
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: const SystemUiOverlayStyle(
@@ -92,23 +97,9 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: pageController,
             children: <Widget>[
               VideoScreen(),
-              Container(
-                alignment: Alignment.center,
-                child: Icon(
-                  Icons.favorite_rounded,
-                  size: 56,
-                  color: Colors.red[400],
-                ),
-              ),
+              SearchScreen(),
               const AddVideoScreen(),
-              Container(
-                alignment: Alignment.center,
-                child: Icon(
-                  Icons.folder_rounded,
-                  size: 56,
-                  color: Colors.blue[400],
-                ),
-              ),
+              ProfileScreen(uid: authController.user!.uid)
             ],
           ),
         ),

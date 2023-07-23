@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sospac/constants.dart';
 import 'package:sospac/controllers/video_controller.dart';
-import 'package:sospac/views/widgets/video_player_item.dart';
+import 'package:sospac/views/screens/comment_screen.dart';
 
 class VideoScreen extends StatelessWidget {
   VideoScreen({super.key});
 
   final VideoController videoController = Get.put(
       VideoController()); //! if not working, try to this line add state class
-
-  bool isLiked = false;
 
   buildProfilePhoto(String profilePhoto) {
     return Container(
@@ -26,18 +24,19 @@ class VideoScreen extends StatelessWidget {
     );
   }
 
-  int daysBetween(DateTime from) {
-    DateTime now = DateTime.now();
-    return DateTime(now.year, now.month, now.day)
-        .difference(DateTime(from.year, from.month, from.day))
-        .inDays;
-  }
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.black, // Todo: Delete this line
       body: Obx(() {
+        if (videoController.videoList.isEmpty) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Colors.purple,
+            ),
+          );
+        }
         return PageView.builder(
           itemCount: videoController.videoList.length,
           controller: PageController(initialPage: 0, viewportFraction: 1),
@@ -46,8 +45,9 @@ class VideoScreen extends StatelessWidget {
             final data = videoController.videoList[index];
             return Stack(
               children: [
-                VideoPlayerItem(
-                    videoUrl: data.videoUrl), // Todo: video player item
+                /* VideoPlayerItem(
+                  videoUrl: data.videoUrl,
+                ), */ // Todo: video player item
                 Column(
                   children: [
                     const SizedBox(
@@ -63,13 +63,29 @@ class VideoScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(left: 20),
                               child: Row(
                                 children: [
-                                  Padding(
+                                  /* Padding(
                                     padding: const EdgeInsets.only(
                                       right: 10,
                                       bottom: 15,
                                     ),
-                                    child: buildProfilePhoto(data.profilePhoto),
-                                  ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => ProfileScreen(
+                                              uid: data.uid,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: data.profilePhoto.isEmpty
+                                          ? const CircularProgressIndicator(
+                                              color: Colors.purple,
+                                            )
+                                          : buildProfilePhoto(
+                                              data.profilePhoto),
+                                    ),
+                                  ), */
                                   SizedBox(
                                     width: size.width * 0.50,
                                     child: Column(
@@ -158,7 +174,6 @@ class VideoScreen extends StatelessWidget {
                                     InkWell(
                                       onTap: () {
                                         videoController.likeVideo(data.id);
-                                        isLiked = !isLiked;
                                       },
                                       child: Icon(
                                         data.likes.contains(
@@ -187,7 +202,15 @@ class VideoScreen extends StatelessWidget {
                                 Column(
                                   children: [
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => CommentScreen(
+                                              id: data.id,
+                                            ),
+                                          ),
+                                        );
+                                      },
                                       child: const Icon(
                                         Icons.comment_outlined,
                                         size: 40,
@@ -209,7 +232,13 @@ class VideoScreen extends StatelessWidget {
                                 Column(
                                   children: [
                                     InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        share(
+                                          "SOSPAC",
+                                          "Check out this video on SOSPAC",
+                                          data.videoUrl,
+                                        );
+                                      },
                                       child: const Icon(
                                         Icons.reply_outlined,
                                         size: 40,

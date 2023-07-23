@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sospac/views/screens/comfirm_screen.dart';
@@ -141,6 +142,7 @@ class AddVideoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Colors.deepPurpleAccent.shade100);
     return Scaffold(
       backgroundColor: Colors.deepPurpleAccent.shade100,
       body: Center(
@@ -160,7 +162,7 @@ class AddVideoScreen extends StatelessWidget {
                     const Shadow(
                       color: Colors.amber,
                       blurRadius: 10,
-                      offset: Offset(0, 5),
+                      offset: Offset(3, 4),
                     ),
                   ],
                 ),

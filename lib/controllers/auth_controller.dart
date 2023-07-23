@@ -10,6 +10,9 @@ import 'package:sospac/views/screens/auth/login_screen.dart';
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
 
+  String downloadUrl =
+      "https://cdn-icons-png.flaticon.com/512/847/847969.png?w=740&t=st=1690124807~exp=1690125407~hmac=62e162d8114cb9b66801673f94a7abfbf3a0f38a28d78caea82d5e1c9d89d529";
+
   late Rx<User?> _user;
 
   late Rx<File?> _pickedImage =
@@ -85,7 +88,7 @@ class AuthController extends GetxController {
           email: email,
           password: password,
         );
-        String downloadUrl = await _uploadToStorage(image);
+        downloadUrl = await _uploadToStorage(image);
         Umodel.User user = Umodel.User(
           name: Username,
           email: email,
@@ -124,6 +127,17 @@ class AuthController extends GetxController {
     } catch (e) {
       Get.snackbar(
         "Error logging in",
+        e.toString(),
+      );
+    }
+  }
+
+  signOut() async {
+    try {
+      await firebaseAuth.signOut();
+    } catch (e) {
+      Get.snackbar(
+        "Error signing out",
         e.toString(),
       );
     }

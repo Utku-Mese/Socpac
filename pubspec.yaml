@@ -45,10 +45,21 @@ dependencies:
   water_drop_nav_bar: ^2.2.0+5
   video_player: ^2.7.0
   video_compress: ^3.1.2
+  timeago: ^3.5.0
+  flutter_statusbarcolor_ns: ^0.5.0
+  cached_network_image: ^3.2.3
+  awesome_dialog: ^3.1.0
+  flutter_share: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "asset/image/sospac.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

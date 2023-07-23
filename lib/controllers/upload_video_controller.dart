@@ -6,6 +6,9 @@ import 'package:sospac/models/video_model.dart';
 import 'package:video_compress/video_compress.dart';
 
 class UploadVideoController extends GetxController {
+
+  var isUploading = false.obs;
+
   _compressVideo(String videoPath) async {
     final compressedVideo = await VideoCompress.compressVideo(
       videoPath,
@@ -67,6 +70,7 @@ class UploadVideoController extends GetxController {
       required String tag,
       required String videoPath}) async {
     try {
+      isUploading.value = true;
       String uid = firebaseAuth.currentUser!.uid;
       DocumentSnapshot userDoc =
           await firestore.collection('users').doc(uid).get();
@@ -95,9 +99,10 @@ class UploadVideoController extends GetxController {
           .collection("videos")
           .doc("Video $len")
           .set(video.toJson());
-
+      isUploading.value = false;
       Get.back();
     } catch (e) {
+       isUploading.value = false;
       Get.snackbar(
         "Error Uploading Video",
         e.toString(),

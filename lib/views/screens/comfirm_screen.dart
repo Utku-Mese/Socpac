@@ -96,20 +96,35 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  ElevatedButton(
-                    onPressed: () => _uploadVideoController.uploadVideo(
-                      caption: _captionController.text,
-                      tag: _TagController.text,
-                      videoPath: widget.videoPath,
-                    ),
-                    child: Text(
-                      "Post",
-                      style: GoogleFonts.poppins(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
-                    ),
-                  )
+                  Obx(() {
+                    // Show CircularProgressIndicator only when isUploading is true
+                    if (_uploadVideoController.isUploading.value) {
+                      return Column(
+                        children: const [
+                          Text("Please wait while upload your video"),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          CircularProgressIndicator(),
+                        ],
+                      );
+                    } else {
+                      return ElevatedButton(
+                        onPressed: () => _uploadVideoController.uploadVideo(
+                          caption: _captionController.text,
+                          tag: _TagController.text,
+                          videoPath: widget.videoPath,
+                        ),
+                        child: Text(
+                          "Post",
+                          style: GoogleFonts.poppins(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+                    }
+                  })
                 ],
               ),
             )
