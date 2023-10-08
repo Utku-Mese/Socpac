@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
-import '../../constants.dart';
+import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
+
+import '../../utils/constants.dart';
 import 'add_video_screen.dart';
 import 'profile_screen.dart';
 import 'search_screen.dart';
 import 'video_screen.dart';
-import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../constants.dart';
-import '../../controllers/comment_controller.dart';
-import 'profile_screen.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import '../../controllers/comment_controller.dart';
+import '../../utils/constants.dart';
+import 'profile_screen.dart';
 
 class CommentScreen extends StatelessWidget {
   final String id;

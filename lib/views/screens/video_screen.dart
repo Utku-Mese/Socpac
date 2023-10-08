@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../constants.dart';
 import '../../controllers/video_controller.dart';
+import '../../utils/constants.dart';
 import 'comment_screen.dart';
 import 'profile_screen.dart';
 import '../widgets/video_player_item.dart';

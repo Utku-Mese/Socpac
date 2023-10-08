@@ -3,13 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
-
-import 'controllers/auth_controller.dart';
+import '../controllers/auth_controller.dart';
 
 //COLORS
 /* const primaryColor = Color(0xFFA826C9);
 const secondaryColor = Color(0xFFEEC800); */
-
 Color primaryColor = Colors.deepPurpleAccent.shade100;
 const secondaryColor = Colors.amber;
 

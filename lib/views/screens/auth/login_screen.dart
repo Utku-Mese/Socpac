@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../constants.dart';
-import 'signup_screen.dart';
+
+import '../../../utils/constants.dart';
 import '../../widgets/text_input_field.dart';
+import 'signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});

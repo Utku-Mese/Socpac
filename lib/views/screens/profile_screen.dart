@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../constants.dart';
 import '../../controllers/profile_controller.dart';
+import '../../utils/constants.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;

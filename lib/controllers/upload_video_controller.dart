@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
-import '../constants.dart';
 import '../models/video_model.dart';
 import 'package:video_compress/video_compress.dart';
+
+import '../utils/constants.dart';
 
 class UploadVideoController extends GetxController {
 

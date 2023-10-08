@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../controllers/search_controller.dart';
-import 'profile_screen.dart';
 
+import '../../controllers/search_controller.dart';
 import '../../models/user_model.dart';
+import 'profile_screen.dart';
 
 class SearchScreen extends StatelessWidget {
   SearchScreen({super.key});
