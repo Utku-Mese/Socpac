@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sospac/constants.dart';
-import 'package:sospac/models/user_model.dart' as Umodel;
-import 'package:sospac/views/screens/home_screen.dart';
-import 'package:sospac/views/screens/auth/login_screen.dart';
+import '../constants.dart';
+import '../models/user_model.dart' as Umodel;
+import '../views/screens/home_screen.dart';
+import '../views/screens/auth/login_screen.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();

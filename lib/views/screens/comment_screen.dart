@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sospac/constants.dart';
-import 'package:sospac/controllers/comment_controller.dart';
-import 'package:sospac/views/screens/profile_screen.dart';
+import '../../constants.dart';
+import '../../controllers/comment_controller.dart';
+import 'profile_screen.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class CommentScreen extends StatelessWidget {
@@ -59,9 +59,9 @@ class CommentScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                            child: const CircleAvatar(
+                            child:  CircleAvatar(
                               backgroundColor: Colors.grey,
-                              //backgroundImage: NetworkImage(comment.profilePhoto),
+                              backgroundImage: NetworkImage(comment.profilePhoto),
                             ),
                           ),
                           title: Text(

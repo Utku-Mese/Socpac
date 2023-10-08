@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:sospac/constants.dart';
-import 'package:sospac/models/user_model.dart';
+import '../constants.dart';
+import '../models/user_model.dart';
 
-class SearchController extends GetxController {
+class MySearchController extends GetxController {
   final Rx<List<User>> _searchedUsers = Rx<List<User>>([]);
 
   List<User> get searchedUsers => _searchedUsers.value;

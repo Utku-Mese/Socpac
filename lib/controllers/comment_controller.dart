@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:sospac/constants.dart';
-import 'package:sospac/models/comment_model.dart';
+import '../constants.dart';
+import '../models/comment_model.dart';
 
 class CommentController extends GetxController {
   final Rx<List<Comment>> _comments = Rx<List<Comment>>([]);

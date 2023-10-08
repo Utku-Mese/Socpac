@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sospac/constants.dart';
-import 'package:sospac/controllers/video_controller.dart';
-import 'package:sospac/views/screens/comment_screen.dart';
+import '../../constants.dart';
+import '../../controllers/video_controller.dart';
+import 'comment_screen.dart';
+import 'profile_screen.dart';
+import '../widgets/video_player_item.dart';
 
 class VideoScreen extends StatelessWidget {
   VideoScreen({super.key});
@@ -28,7 +30,7 @@ class VideoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.black, // Todo: Delete this line
+      //backgroundColor: Colors.black, // Todo: Delete this line
       body: Obx(() {
         if (videoController.videoList.isEmpty) {
           return const Center(
@@ -45,9 +47,9 @@ class VideoScreen extends StatelessWidget {
             final data = videoController.videoList[index];
             return Stack(
               children: [
-                /* VideoPlayerItem(
+                VideoPlayerItem(
                   videoUrl: data.videoUrl,
-                ), */ // Todo: video player item
+                ), // Todo: video player item
                 Column(
                   children: [
                     const SizedBox(
@@ -63,7 +65,7 @@ class VideoScreen extends StatelessWidget {
                               padding: const EdgeInsets.only(left: 20),
                               child: Row(
                                 children: [
-                                  /* Padding(
+                                  Padding(
                                     padding: const EdgeInsets.only(
                                       right: 10,
                                       bottom: 15,
@@ -85,7 +87,7 @@ class VideoScreen extends StatelessWidget {
                                           : buildProfilePhoto(
                                               data.profilePhoto),
                                     ),
-                                  ), */
+                                  ),
                                   SizedBox(
                                     width: size.width * 0.50,
                                     child: Column(

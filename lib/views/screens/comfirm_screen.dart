@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sospac/controllers/upload_video_controller.dart';
-import 'package:sospac/views/widgets/text_input_field.dart';
+import '../../controllers/upload_video_controller.dart';
+import '../widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
 
 class ConfirmScreen extends StatefulWidget {

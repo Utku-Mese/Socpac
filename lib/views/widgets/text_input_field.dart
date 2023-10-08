@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sospac/constants.dart';
+import '../../constants.dart';
 
 class TextInputField extends StatelessWidget {
   final TextEditingController _controller;
@@ -40,12 +40,7 @@ class TextInputField extends StatelessWidget {
           fontSize: 15,
           color: Color(0XFF767676),
         ),
-        enabledBorder: UnderlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: Colors.white,
-          ),
-        ),
+        border: InputBorder.none,
       ),
       obscureText: _labelText == "Password" ? true : false,
     );

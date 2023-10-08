@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sospac/constants.dart';
-import 'package:sospac/controllers/profile_controller.dart';
+import '../../constants.dart';
+import '../../controllers/profile_controller.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -99,8 +99,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          /* ClipOval(
+                        children:  [
+                          ClipOval(
                             child: CachedNetworkImage(
                               imageUrl:
                                   controller.user["profilePhoto"],
@@ -112,7 +112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               errorWidget: (context, url, error) =>
                                   const Icon(Icons.error, color: Colors.white),
                             ),
-                          ) */
+                          )
                         ],
                       ),
                       const SizedBox(height: 15),
@@ -246,7 +246,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       scrollDirection: Axis.vertical,
 
                       shrinkWrap: true,
-                      itemCount: 8, //controller.user["thumbnails"].length,
+                      itemCount: controller.user["thumbnails"].length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
@@ -255,14 +255,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisSpacing: 5,
                       ),
                       itemBuilder: (context, index) {
-                        /* String thumbnail =
-                            controller.user["thumbnails"][index]; */
+                        String thumbnail =
+                            controller.user["thumbnails"][index];
 
                         return ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: CachedNetworkImage(
                             imageUrl:
-                                "https://xsgames.co/randomusers/avatar.php?g=male", //thumbnail,
+                                thumbnail,
                             fit: BoxFit.cover,
                           ),
                         );

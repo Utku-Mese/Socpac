@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sospac/constants.dart';
-import 'package:sospac/views/widgets/text_input_field.dart';
+import '../../../constants.dart';
+import '../../widgets/text_input_field.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});

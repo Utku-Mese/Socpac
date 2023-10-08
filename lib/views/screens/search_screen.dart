@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sospac/controllers/search_controller.dart';
-import 'package:sospac/views/screens/profile_screen.dart';
+import '../../controllers/search_controller.dart';
+import 'profile_screen.dart';
 
 import '../../models/user_model.dart';
 
 class SearchScreen extends StatelessWidget {
   SearchScreen({super.key});
 
-  final SearchController searchController = Get.put(SearchController());
+  final MySearchController searchController = Get.put(MySearchController());
   final TextEditingController _textEditingController = TextEditingController();
 
   @override
@@ -72,11 +72,11 @@ class SearchScreen extends StatelessWidget {
                         );
                       },
                       child: ListTile(
-                        leading: const CircleAvatar(
+                        leading:  CircleAvatar(
                           backgroundColor: Colors.grey,
-                          /* backgroundImage: NetworkImage(
+                          backgroundImage: NetworkImage(
                             user.profilePhoto,
-                          ), */
+                          ),
                         ),
                         title: Text(
                           user.name,
