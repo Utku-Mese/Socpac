@@ -20,6 +20,7 @@ class CommentController extends GetxController {
           .collection("videos")
           .doc(_postId)
           .collection("comments")
+          .orderBy('datePublished', descending: true)
           .snapshots()
           .map(
         (QuerySnapshot query) {
@@ -87,7 +88,7 @@ class CommentController extends GetxController {
         .doc(id)
         .get();
 
-    if((doc.data()! as dynamic)["likes"].contains(uid)){
+    if ((doc.data()! as dynamic)["likes"].contains(uid)) {
       await firestore
           .collection("videos")
           .doc(_postId)

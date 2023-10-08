@@ -247,13 +247,13 @@ class VideoScreen extends StatelessWidget {
                                         color: Colors.white,
                                       ),
                                     ),
-                                    Text(
-                                      data.shareCount.toString(),
+                                    /* Text(
+                                      data.shareCount.toString(), // Share count
                                       style: const TextStyle(
                                         fontSize: 18,
                                         color: Colors.white,
                                       ),
-                                    ),
+                                    ), */
                                   ],
                                 ),
                               ],

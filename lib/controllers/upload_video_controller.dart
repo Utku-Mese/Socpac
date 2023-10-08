@@ -7,7 +7,6 @@ import 'package:video_compress/video_compress.dart';
 import '../utils/constants.dart';
 
 class UploadVideoController extends GetxController {
-
   var isUploading = false.obs;
 
   _compressVideo(String videoPath) async {
@@ -77,7 +76,7 @@ class UploadVideoController extends GetxController {
           await firestore.collection('users').doc(uid).get();
       // get id
       var allDocs = await firestore.collection('videos').get();
-      int len = allDocs.docs.length;
+      int len = allDocs.docs.length + 1;
       String videoUrl = await _uploadVideoToStorage("Video $len", videoPath);
       String thumbnail = await _uploadImageToStorage("Video $len", videoPath);
 
@@ -103,7 +102,7 @@ class UploadVideoController extends GetxController {
       isUploading.value = false;
       Get.back();
     } catch (e) {
-       isUploading.value = false;
+      isUploading.value = false;
       Get.snackbar(
         "Error Uploading Video",
         e.toString(),

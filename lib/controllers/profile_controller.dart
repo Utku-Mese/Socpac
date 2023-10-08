@@ -117,11 +117,11 @@ class ProfileController extends GetxController {
           .delete();
 
       await firestore
-            .collection("users")
-            .doc(authController.user!.uid)
-            .collection("following")
-            .doc(_uid.value)
-            .delete();
+          .collection("users")
+          .doc(authController.user!.uid)
+          .collection("following")
+          .doc(_uid.value)
+          .delete();
       _user.value.update(
         "followers",
         (value) => (int.parse(value) - 1).toString(),

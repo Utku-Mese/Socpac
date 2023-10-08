@@ -12,8 +12,11 @@ class VideoController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _videoList.bindStream(
-        firestore.collection("videos").snapshots().map((QuerySnapshot query) {
+    _videoList.bindStream(firestore
+        .collection("videos")
+        .orderBy('createdAt', descending: true)
+        .snapshots()
+        .map((QuerySnapshot query) {
       List<Video> retVal = [];
       for (var element in query.docs) {
         retVal.add(
@@ -23,19 +26,21 @@ class VideoController extends GetxController {
       return retVal;
     }));
   }
+
   likeVideo(String videoId) async {
-   DocumentSnapshot doc = await firestore.collection("videos").doc(videoId).get();
+    DocumentSnapshot doc =
+        await firestore.collection("videos").doc(videoId).get();
 
     var uid = authController.user!.uid;
 
-   if((doc.data()! as dynamic)["likes"].contains(uid)){
-    await firestore.collection("videos").doc(videoId).update({
-      "likes": FieldValue.arrayRemove([uid])
-    });
-   } else {
-     await firestore.collection("videos").doc(videoId).update({
-       "likes": FieldValue.arrayUnion([uid])
-     });
-   }
+    if ((doc.data()! as dynamic)["likes"].contains(uid)) {
+      await firestore.collection("videos").doc(videoId).update({
+        "likes": FieldValue.arrayRemove([uid])
+      });
+    } else {
+      await firestore.collection("videos").doc(videoId).update({
+        "likes": FieldValue.arrayUnion([uid])
+      });
+    }
   }
 }
